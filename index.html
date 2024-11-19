@@ -38,6 +38,46 @@
             .dblclick((e)=>{
                 $(e.target).fadeOut()
             })
+            $('.image1').attr({
+                src:"'attels1",
+                alt:"attels"
+            });
+
+            let menu = [
+                {
+                    pageName:"Galvenā",
+                    url:"/"
+                },
+                {
+                    pageName:"Par  mums",
+                    url:"about.html"
+                },
+                {
+                    pageName:"FotoGalerija",
+                    url:"fotogalerija.html"
+                },
+                {
+                    pageName:"Kontakti",
+                    url:"kontakti.html"
+                }
+            ]
+
+            $.each(menu,(index,value)=>{
+                $('nav').append(`
+                    <a href="${value.url}">${value.pageName}</a>
+                `)
+            })
+            $('nav').css({
+                    display:"flex",
+                    justifyContent:"center",
+                    gap:"10px",
+                    background:"#232323",
+                    padding:"10px 20px"
+                })
+                
+
+
+
 
 
 
@@ -61,7 +101,7 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
-    <img src="" alt="">
+    <img src="" alt="" class="image1">
     <button>Click</button>
     <form action="">
 
