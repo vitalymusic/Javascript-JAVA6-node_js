@@ -74,8 +74,14 @@
                     background:"#232323",
                     padding:"10px 20px"
                 })
-                
+            $('nav a').css({
+                color:"white"
+            })    
 
+            $('button#one').click(()=>{
+                $('nav').fadeToggle();
+                // $('nav').slideToggle();
+            })    
 
 
 
@@ -102,7 +108,7 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
     <img src="" alt="" class="image1">
-    <button>Click</button>
+    <button id="one">Click</button>
     <form action="">
 
     </form>
