@@ -1,138 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script src="./jquery.cut-list.min.js"></script>
-    <link rel="stylesheet" href="./jquery.cut-list.css">
+   
 
     <script>
-        $(document).ready(()=>{
-        //    document.querySelector('h1')  Vanilla JS
-        
-        $('h1').css({
-            color:"red",
-            fontSize:"40pt",
-            borderBottom:"2px solid green"
-        })
-        $('p')
-            .addClass('yellow')
-            .click(()=>{
-                $('p').css({
-                    background:"grey"
-                })  
+        $(document).ready(() => {
+            //    document.querySelector('h1')  Vanilla JS
+
+            $('h1').css({
+                color: "red",
+                fontSize: "40pt",
+                borderBottom: "2px solid green"
             })
-            .mouseover(()=>{
-                $(document.body).css({
-                     background:"lightblue",
-                     color:"black"
+            $('p')
+                .addClass('yellow')
+                .click(() => {
+                    $('p').css({
+                        background: "grey"
+                    })
                 })
-            })
-            .mouseleave(()=>{
-                $(document.body).css({
-                     background:"darkblue",
-                     color:"white"
+                .mouseover(() => {
+                    $(document.body).css({
+                        background: "lightblue",
+                        color: "black"
+                    })
                 })
-            })
-            .dblclick((e)=>{
-                $(e.target).fadeOut()
-            })
+                .mouseleave(() => {
+                    $(document.body).css({
+                        background: "darkblue",
+                        color: "white"
+                    })
+                })
+                .dblclick((e) => {
+                    $(e.target).fadeOut()
+                })
             $('.image1').attr({
-                src:"'attels1",
-                alt:"attels"
+                src: "'attels1",
+                alt: "attels"
             });
 
             let menu = [
                 {
-                    pageName:"Galvenā",
-                    url:"/"
+                    pageName: "Galvenā",
+                    url: "/"
                 },
                 {
-                    pageName:"Par  mums",
-                    url:"about.html"
+                    pageName: "Par  mums",
+                    url: "about.html"
                 },
                 {
-                    pageName:"FotoGalerija",
-                    url:"fotogalerija.html"
+                    pageName: "FotoGalerija",
+                    url: "fotogalerija.html"
                 },
                 {
-                    pageName:"Kontakti",
-                    url:"kontakti.html"
+                    pageName: "Kontakti",
+                    url: "kontakti.html"
                 }
             ]
 
-            $.each(menu,(index,value)=>{
+            $.each(menu, (index, value) => {
                 $('nav').append(`
                     <a href="${value.url}">${value.pageName}</a>
                 `)
             })
             $('nav').css({
-                    display:"flex",
-                    justifyContent:"center",
-                    gap:"10px",
-                    background:"#232323",
-                    padding:"10px 20px"
-                })
+                display: "flex",
+                justifyContent: "center",
+                gap: "10px",
+                background: "#232323",
+                padding: "10px 20px"
+            })
             $('nav a').css({
-                color:"white"
-            })    
+                color: "white"
+            })
 
-            $('button#one').click(()=>{
+            $('button#one').click(() => {
                 $('nav').fadeToggle();
                 // $('nav').slideToggle();
-            })    
+            })
 
 
-           
-            $('button#two').click(()=>{
+
+            $('button#two').click(() => {
                 let queryField = $('.imageq').val();
 
-                 // .container
+                // .container
 
 
                 //  Pexels API exaM4WddpeCHbumfoRf61GLq1qJnHUP110KINxjn3FdgitUTOX2xniiB
                 // headers: {
                 //     'Authorization': 'Your-Api-Key'
                 // } 
-                
-                 
+
+
                 //  $.get(,(data)=>{
                 //     console.log(data);
                 //  })
 
-                    $.ajax({
-                        url:`https://api.pexels.com/v1/search?query=${queryField}`,
-                        type: "GET",
-                        headers:{
-                            'Authorization':'exaM4WddpeCHbumfoRf61GLq1qJnHUP110KINxjn3FdgitUTOX2xniiB'
-                        }
-                    })
-                    .then((data)=>{
+                $.ajax({
+                    url: `https://api.pexels.com/v1/search?query=${queryField}`,
+                    type: "GET",
+                    headers: {
+                        'Authorization': 'exaM4WddpeCHbumfoRf61GLq1qJnHUP110KINxjn3FdgitUTOX2xniiB'
+                    }
+                })
+                    .then((data) => {
                         console.log(data);
-                    $.each(data.photos, (index,item)=>{
-                    $('.container')
-                    .append(`
+                        $.each(data.photos, (index, item) => {
+                            $('.container')
+                                .append(`
                         <img src="${item.src.original}" width="100%">
                     `)
-                    .css({
-                        display:"grid",
-                        gridTemplateColumns:"auto auto auto auto",
-                        gap:"10px"
+                                .css({
+                                    display: "grid",
+                                    gridTemplateColumns: "auto auto auto auto",
+                                    gap: "10px"
+                                })
+                        })
+
+
                     })
-                 })
 
 
-                 })
 
-
-                 
 
             })
 
+
+
+            $(".cut-list").cutList({
+                // options here
+                // showMoreOnHover:true
+            });
 
 
 
@@ -140,31 +150,41 @@
         })
 
     </script>
+     <link rel="stylesheet" href="./jquery.cut-list.css">
+     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <style>
-        .yellow{
-            border:2px solid red;
+        .yellow {
+            border: 2px solid red;
             padding: 30px;
             background-color: yellow;
         }
+
+
+        .cut-list { list-style: none; background-color: #7C3AED; color: #fff; line-height: 50px; }
+        .cut-list > li { margin: 0 2rem;  }
     </style>
 </head>
+
 <body>
     <nav>
 
     </nav>
 
     <ul class="cut-list">
-           <li>Item 1</li>
-           <li>Item 2</li>
-           <li>Item 3</li>
-           <li>Item 4</li>
-           <li>Item 5</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
     </ul>
-        
+
     <h1>Jquery</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere
+        libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere
+        libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere
+        libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
     <img src="" alt="" class="image1">
     <button id="one">Click</button>
     <br>
@@ -180,4 +200,5 @@
 
 
 </body>
+
 </html>
