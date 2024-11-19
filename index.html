@@ -86,16 +86,34 @@
 
            
             $('button#two').click(()=>{
+                let queryField = $('.imageq').val();
 
                  // .container
+
+
+                //  Pexels API exaM4WddpeCHbumfoRf61GLq1qJnHUP110KINxjn3FdgitUTOX2xniiB
+                // headers: {
+                //     'Authorization': 'Your-Api-Key'
+                // } 
+                
                  
-                 $.get("https://jsonplaceholder.typicode.com/photos/",(data)=>{
-                    data =  data.slice(0,200);
-                 }).then((data)=>{
-                    $.each(data, (index,item)=>{
+                //  $.get(,(data)=>{
+                //     console.log(data);
+                //  })
+
+                    $.ajax({
+                        url:`https://api.pexels.com/v1/search?query=${queryField}`,
+                        type: "GET",
+                        headers:{
+                            'Authorization':'exaM4WddpeCHbumfoRf61GLq1qJnHUP110KINxjn3FdgitUTOX2xniiB'
+                        }
+                    })
+                    .then((data)=>{
+                        console.log(data);
+                    $.each(data.photos, (index,item)=>{
                     $('.container')
                     .append(`
-                        <img src="${item.thumbnailUrl}" width="100%">
+                        <img src="${item.src.original}" width="100%">
                     `)
                     .css({
                         display:"grid",
@@ -139,6 +157,7 @@
     <button id="one">Click</button>
     <br>
     <br>
+    <input type="text" class="imageq">
     <button id="two">Ielādēt bildes</button>
     <div class="container"></div>
 
