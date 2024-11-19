@@ -84,6 +84,34 @@
             })    
 
 
+           
+            $('button#two').click(()=>{
+
+                 // .container
+                 
+                 $.get("https://jsonplaceholder.typicode.com/photos/",(data)=>{
+                    data =  data.slice(0,200);
+                 }).then((data)=>{
+                    $.each(data, (index,item)=>{
+                    $('.container')
+                    .append(`
+                        <img src="${item.thumbnailUrl}" width="100%">
+                    `)
+                    .css({
+                        display:"grid",
+                        gridTemplateColumns:"auto auto auto auto",
+                        gap:"10px"
+                    })
+                 })
+
+
+                 })
+
+
+                 
+
+            })
+
 
 
 
@@ -109,8 +137,16 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime placeat voluptates deserunt illo doloribus facere libero quibusdam culpa inventore, corrupti eum voluptatibus odit quod fugiat atque expedita at a asperiores!</p>
     <img src="" alt="" class="image1">
     <button id="one">Click</button>
+    <br>
+    <br>
+    <button id="two">Ielādēt bildes</button>
+    <div class="container"></div>
+
+
     <form action="">
 
     </form>
+
+
 </body>
 </html>
